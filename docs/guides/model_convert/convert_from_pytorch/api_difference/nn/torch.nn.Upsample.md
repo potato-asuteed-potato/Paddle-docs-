@@ -1,4 +1,4 @@
-## [ 仅 paddle 参数更多 ]torch.nn.Upsample
+## [ paddle 参数更多 ]torch.nn.Upsample
 ### [torch.nn.Upsample](https://pytorch.org/docs/stable/generated/torch.nn.Upsample.html?highlight=upsample#torch.nn.Upsample)
 
 ```python
@@ -8,7 +8,7 @@ torch.nn.Upsample(size=None,
                   align_corners=False)
 ```
 
-### [paddle.nn.Upsample](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/Upsample_cn.html#upsample)
+### [paddle.nn.Upsample](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/paddle/nn/Upsample_cn.html#upsample)
 
 ```python
 paddle.nn.Upsample(size=None,
@@ -20,8 +20,9 @@ paddle.nn.Upsample(size=None,
                    name=None)
 ```
 
-其中 Paddle 相比 Pytorch 支持更多其他参数，具体如下：
+其中 Paddle 相比 PyTorch 支持更多其他参数，具体如下：
 ### 参数映射
+
 | PyTorch       | PaddlePaddle | 备注                                                   |
 | ------------- | ------------ | ------------------------------------------------------ |
 | size            | size   | 表示输出 Tensor 的大小。    |

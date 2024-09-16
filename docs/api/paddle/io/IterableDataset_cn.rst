@@ -1,4 +1,4 @@
-.. _cn_api_io_cn_IterableDataset:
+.. _cn_api_paddle_io_IterableDataset:
 
 IterableDataset
 -------------------------------
@@ -9,12 +9,12 @@ IterableDataset
 
 迭代式(iterable style)数据集需要继承这个基类，迭代式数据集为只能依次迭代式获取样本的数据集，类似 Python 中的迭代器，所有迭代式数据集须实现以下方法：
 
-``__iter__``：依次返回数据赝本。
+``__iter__``：依次返回数据样本。
 
 .. note::
     迭代式数据集不需要实现 ``__getitem__`` 和 ``__len__``，也不可以调用迭代式数据集的这两个方法。
 
-见 :ref:`cn_api_fluid_io_DataLoader` 。
+见 :ref:`cn_api_paddle_io_DataLoader` 。
 
 代码示例 1
 ::::::::::::

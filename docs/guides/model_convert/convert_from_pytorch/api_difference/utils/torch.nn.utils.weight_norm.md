@@ -7,7 +7,7 @@ torch.nn.utils.weight_norm(module,
                             dim=0)
 ```
 
-### [paddle.nn.utils.weight_norm](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/utils/weight_norm_cn.html#weight-norm)
+### [paddle.nn.utils.weight_norm](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/paddle/nn/utils/weight_norm_cn.html#weight-norm)
 
 ```python
 paddle.nn.utils.weight_norm(layer,
@@ -16,6 +16,7 @@ paddle.nn.utils.weight_norm(layer,
 ```
 两者功能一致，参数名不一致，具体如下：
 ### 参数映射
+
 | PyTorch       | PaddlePaddle | 备注                                                   |
 | ------------- | ------------ | ------------------------------------------------------ |
 | module        | layer        | 要添加权重归一化的层，参数名不一致。                                    |

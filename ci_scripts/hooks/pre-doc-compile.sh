@@ -2,6 +2,10 @@
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
+FLUIDDOCDIR=${FLUIDDOCDIR:=/FluidDoc}
+DOCROOT=${FLUIDDOCDIR}/docs
+
+
 ## 1 merge the pytorch to paddle api map tables
 # FILES_ARRAY=("https://raw.githubusercontent.com/PaddlePaddle/X2Paddle/develop/docs/pytorch_project_convertor/API_docs/README.md"
 # "https://raw.githubusercontent.com/PaddlePaddle/X2Paddle/develop/docs/pytorch_project_convertor/API_docs/ops/README.md"
@@ -34,3 +38,14 @@ for i in $(find ${SCRIPT_DIR}/../../docs/ -name '*.ipynb' -type f ) ; do
     jupyter nbconvert --to markdown "$i"
     rm "$i"
 done
+
+
+## 3 apply PyTorch-PaddlePaddle mapping
+APIMAPPING_ROOT=${DOCROOT}/guides/model_convert/convert_from_pytorch
+
+python ${APIMAPPING_ROOT}/tools/apply_references.py
+
+if [ $? -ne 0 ]; then
+    echo "Error: API mapping generate script failed, please check changes in ${APIMAPPING_ROOT}"
+    exit 1
+fi

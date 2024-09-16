@@ -1,9 +1,9 @@
-.. _cn_api_paddle_vision_models_GoogLeNet:
+.. _cn_api_paddle_vision_models_GoogLeNet__upper:
 
 GoogLeNet
 -------------------------------
 
-.. py:function:: paddle.vision.models.googlenet(num_classes=1000, with_pool=True)
+.. py:class:: paddle.vision.models.GoogLeNet(num_classes=1000, with_pool=True)
 
 
 GoogLeNet（Inception v1）模型，来自论文 `"Going Deeper with Convolutions" <https://arxiv.org/pdf/1409.4842.pdf>`_ 。
@@ -17,7 +17,7 @@ GoogLeNet（Inception v1）模型，来自论文 `"Going Deeper with Convolution
 返回
 :::::::::
 
-:ref:`cn_api_fluid_dygraph_Layer`，GoogLeNet（Inception v1）模型实例。
+:ref:`cn_api_paddle_nn_Layer`，GoogLeNet（Inception v1）模型实例。
 
 代码示例
 :::::::::

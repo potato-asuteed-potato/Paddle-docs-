@@ -1,4 +1,4 @@
-.. _cn_api_fluid_dygraph_Layer:
+.. _cn_api_paddle_nn_Layer:
 
 Layer
 -------------------------------
@@ -13,18 +13,24 @@ Layer
 参数
 ::::::::::::
 
-    - **name_scope** (str，可选) - 为 Layer 内部参数命名而采用的名称前缀。如果前缀为“mylayer”，在一个类名为 MyLayer 的 Layer 中，参数名为“mylayer_0.w_n”，其中 w 是参数的名称，n 为自动生成的具有唯一性的后缀。如果为 None，前缀名将为小写的类名。默认值为 None。
+    - **name_scope** (str，可选) - 为 Layer 内部参数命名而采用的名称前缀。如果前缀为“my_layer”，在一个类名为 MyLayer 的 Layer 中，参数名为“mylayer_0.w_n”，其中 w 是参数的名称，n 为自动生成的具有唯一性的后缀。如果为 None，前缀名将为小写的类名。默认值为 None。
     - **dtype** (str 可选) - Layer 中参数数据类型。如果设置为 str，则可以是“bool”，“float16”，“float32”，“float64”，“int8”，“int16”，“int32”，“int64”，“uint8”或“uint16”。默认值为 "float32"。
+
+**返回**
+无
+
+**代码示例**
+
+COPY-FROM: paddle.nn.Layer
 
 方法
 ::::::::::::
+
+
 train()
 '''''''''
 
 将此层及其所有子层设置为训练模式。这只会影响某些模块，如 Dropout 和 BatchNorm。
-
-**返回**
-无
 
 **代码示例**
 
@@ -41,6 +47,22 @@ eval()
 **代码示例**
 
 COPY-FROM: paddle.nn.Layer.eval
+
+apply(fn)
+'''''''''
+
+将一个函数 fn 递归地应用到网络的每一个子层(即在函数的 ``.sublayers()`` 中返回的子层)以及模块自身。该方法通常用来初始化一个模型中的参数。
+
+**参数**
+
+    - **fn** (function) - 应用到每一个子层的函数
+
+**返回**
+Layer (返回网络层)， self (返回自身)
+
+**代码示例**
+
+COPY-FROM: paddle.nn.Layer.apply
 
 full_name()
 '''''''''
@@ -102,7 +124,7 @@ create_parameter(shape, attr=None, dtype="float32", is_bias=False, default_initi
 **参数**
 
     - **shape** (list) - 参数的形状。列表中的数据类型必须为 int。
-    - **attr** (ParamAttr，可选) - 指定权重参数属性的对象，表示使用默认的权重参数属性。具体用法请参见 :ref:`cn_api_fluid_ParamAttr`。默认值为 None。
+    - **attr** (ParamAttr，可选) - 指定权重参数属性的对象，表示使用默认的权重参数属性。具体用法请参见 :ref:`cn_api_paddle_ParamAttr`。默认值为 None。
     - **dtype** (str|core.VarDesc.VarType，可选) - Layer 中参数数据类型。如果设置为 str，则可以是“bool”，“float16”，“float32”，“float64”，“int8”，“int16”，“int32”，“int64”，“uint8”或“uint16”。默认值为“float32”。
     - **is_bias** (bool，可选) - 是否是偏置参数。默认值：False。
     - **default_initializer** (Initializer，可选) - 默认的参数初始化方法。如果设置为 None，则设置非 bias 参数的初始化方式为 paddle.nn.initializer.Xavier，设置 bias 参数的初始化方式为 paddle.nn.initializer.Constant。默认值：None。
@@ -206,10 +228,14 @@ sublayers(include_self=False)
 
 COPY-FROM: paddle.nn.Layer.sublayers
 
-clear_gradients()
+clear_gradients(set_to_zero=True)
 '''''''''
 
 清除该层所有参数的梯度。
+
+**参数**
+
+    - **set_to_zero** (bool，可选) - 是否将可训练参数的梯度设置为 0 ，若为 False 则设为 None。默认值：True。
 
 **返回**
 无
@@ -218,7 +244,7 @@ clear_gradients()
 
 COPY-FROM: paddle.nn.Layer.clear_gradients
 
-named_parameters(prefix='', include_sublayers=True)
+named_parameters(prefix='', include_sublayers=True, remove_duplicate=True)
 '''''''''
 
 返回层中所有参数的迭代器，生成名称和参数的元组。
@@ -227,6 +253,7 @@ named_parameters(prefix='', include_sublayers=True)
 
     - **prefix** (str，可选) - 在所有参数名称前加的前缀。默认值：''。
     - **include_sublayers** (bool，可选) - 是否返回子层的参数。如果为 True，返回的列表中包含子层的参数。默认值：True。
+    - **remove_duplicate** (bool，可选) - 是否删除结果中重复的参数。默认值：True。
 
 **返回**
 iterator，产出名称和参数的元组的迭代器。
@@ -235,7 +262,7 @@ iterator，产出名称和参数的元组的迭代器。
 
 COPY-FROM: paddle.nn.Layer.named_parameters
 
-named_sublayers(prefix='', include_self=False, layers_set=None)
+named_sublayers(prefix='', include_self=False, layers_set=None, remove_duplicate=True)
 '''''''''
 
 返回层中所有子层上的迭代器，生成名称和子层的元组。重复的子层只产生一次。
@@ -244,7 +271,8 @@ named_sublayers(prefix='', include_self=False, layers_set=None)
 
     - **prefix** (str，可选) - 在所有参数名称前加的前缀。默认值：''。
     - **include_self** (bool，可选) - 是否包含该层自身。默认值：False。
-    - **layers_set** (set，可选)：记录重复子层的集合。默认值：None。
+    - **layers_set** (set，可选) - 用来记录已经加入结果的子层的集合。默认值：None。
+    - **remove_duplicate** (bool，可选) - 是否删除结果中重复的子层。默认值：True。
 
 **返回**
 iterator，产出名称和子层的元组的迭代器。
@@ -291,7 +319,7 @@ list，一个由当前层及其子层的所有 buffers 组成的列表，列表�
 
 COPY-FROM: paddle.nn.Layer.buffers
 
-named_buffers(prefix='', include_sublayers=True)
+named_buffers(prefix='', include_sublayers=True, remove_duplicate=True)
 '''''''''
 
 返回层中所有 buffers 的迭代器，生成名称和 buffer 的元组。
@@ -300,6 +328,7 @@ named_buffers(prefix='', include_sublayers=True)
 
     - **prefix** (str，可选) - 在所有 buffer 名称前加的前缀。默认值：''。
     - **include_sublayers** (bool，可选) - 是否返回子层的 buffers。如果为 True，返回的列表中包含子层的 buffers。默认值：True。
+    - **remove_duplicate** (bool，可选) - 是否删除结果中重复的 buffers。默认值：True。
 
 **返回**
 iterator，产出名称和 buffer 的元组的迭代器。
@@ -355,7 +384,7 @@ Parameter，传入的参数实例
 
 COPY-FROM: paddle.nn.Layer.add_parameter
 
-state_dict(destination=None, include_sublayers=True, use_hook=True)
+state_dict(destination=None, include_sublayers=True, structured_name_prefix='', use_hook=True, keep_vars=True)
 '''''''''
 
 获取当前层及其子层的所有参数和可持久性 buffers。并将所有参数和 buffers 存放在 dict 结构中。
@@ -364,7 +393,9 @@ state_dict(destination=None, include_sublayers=True, use_hook=True)
 
     - **destination** (dict，可选) - 如果提供 ``destination``，则所有参数和可持久性 buffers 都将存放在 ``destination`` 中。默认值：None。
     - **include_sublayers** (bool，可选) - 如果设置为 True，则包括子层的参数和 buffers。默认值：True。
+    - **structured_name_prefix** (str，可选) - 添加到参数和缓冲区名称的前缀。默认值：''。
     - **use_hook** (bool，可选) - 如果设置为 True，将_state_dict_hooks 中注册的函数应用于 destination。默认值：True。
+    - **keep_vars** (bool，可选) - 如果设置为 False，状态字典中返回的 tensors 将脱离计算图。默认值：True。
 
 **返回**
 dict，包含所有参数和可持久行 buffers 的 dict
@@ -407,6 +438,22 @@ to(device=None, dtype=None, blocking=None)
 
 COPY-FROM: paddle.nn.Layer.to
 
+astype(dtype=None)
+'''''''''
+将 Layer 的所有 ``parameters`` 和 ``buffers`` 的数据类型转换为 ``dtype``，并返回这个 Layer。
+
+**参数**
+
+    - **dtype** (str | paddle.dtype | numpy.dtype) - 转换后的 dtype，str 类型支持"bool", "bfloat16", "float16", "float32", "float64", "int8", "int16", "int32", "int64", "uint8", "complex64", "complex128"。
+
+返回：类型转换后的 Layer
+
+返回类型：Layer
+
+**代码示例**
+
+COPY-FROM: paddle.nn.Layer.astype
+
 float(excluded_layers=None)
 '''''''''
 
@@ -414,7 +461,7 @@ float(excluded_layers=None)
 
 **参数**
 
-    - **excluded_layers** （list|nn.Layer|None，可选） - 不需要转换数据类型的层。如果 ``excluded_layers`` 为 None，则转换所有浮点参数和缓冲区，默认值：None。
+    - **excluded_layers** （list|tuple|nn.Layer|None，可选） - 不需要转换数据类型的层。如果 ``excluded_layers`` 为 None，则转换所有浮点参数和缓冲区，默认值：None。
 
 **代码示例**
 
@@ -430,7 +477,7 @@ float16(excluded_layers=None)
 
 **参数**
 
-    - **excluded_layers** （list|nn.Layer|None，可选） - 不需要转换数据类型的层。如果 ``excluded_layers`` 为 None，则转换除 ``nn.BatchNorm`` 之外的所有浮点参数和缓冲区，默认值：None。
+    - **excluded_layers** （list|tuple|nn.Layer|None，可选） - 不需要转换数据类型的层。如果 ``excluded_layers`` 为 None，则转换除 ``nn.BatchNorm`` 之外的所有浮点参数和缓冲区，默认值：None。
 
 **代码示例**
 
@@ -446,7 +493,7 @@ bfloat16(excluded_layers=None)
 
 **参数**
 
-    - **excluded_layers** （list|nn.Layer|None，可选） - 不需要转换数据类型的层。如果 ``excluded_layers`` 为 None，则转换除 ``nn.BatchNorm`` 之外的所有浮点参数和缓冲区，默认值：None。
+    - **excluded_layers** （list|tuple|nn.Layer|None，可选） - 不需要转换数据类型的层。如果 ``excluded_layers`` 为 None，则转换除 ``nn.BatchNorm`` 之外的所有浮点参数和缓冲区，默认值：None。
 
 **代码示例**
 

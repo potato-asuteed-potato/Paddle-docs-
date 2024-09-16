@@ -9,7 +9,7 @@ torch.nn.utils.spectral_norm(module,
                                 dim=None)
 ```
 
-### [paddle.nn.utils.spectral_norm](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/utils/spectral_norm_cn.html#spectral-norm)
+### [paddle.nn.utils.spectral_norm](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/paddle/nn/utils/spectral_norm_cn.html#spectral-norm)
 
 ```python
 paddle.nn.utils.spectral_norm(layer,
@@ -20,6 +20,7 @@ paddle.nn.utils.spectral_norm(layer,
 ```
 两者功能一致，参数名不一致，具体如下：
 ### 参数映射
+
 | PyTorch       | PaddlePaddle | 备注                                                   |
 | ------------- | ------------ | ------------------------------------------------------ |
 | module        | layer        | 要添加权重谱归一化的层，参数名不一致。                                  |

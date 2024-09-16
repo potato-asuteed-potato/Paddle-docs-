@@ -1,4 +1,4 @@
-##  [ 参数不一致 ]torch.nn.functional.smooth_l1_loss
+##  [ 输入参数用法不一致 ]torch.nn.functional.smooth_l1_loss
 
 ### [torch.nn.functional.smooth_l1_loss](https://pytorch.org/docs/stable/generated/torch.nn.functional.smooth_l1_loss.html)
 
@@ -11,7 +11,7 @@ torch.nn.functional.smooth_l1_loss(input,
                     beta=1.0)
 ```
 
-### [paddle.nn.functional.smooth_l1_loss](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/functional/smooth_l1_loss_cn.html#smooth-l1-loss)
+### [paddle.nn.functional.smooth_l1_loss](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/paddle/nn/functional/smooth_l1_loss_cn.html#smooth-l1-loss)
 
 ```python
 paddle.nn.functional.smooth_l1_loss(input,
@@ -24,6 +24,7 @@ paddle.nn.functional.smooth_l1_loss(input,
 两者功能一致，但 Paddle 的 `delta` 和 PyTorch 的 `beta` 参数在公式中用法不一致，具体如下：
 
 ### 参数映射
+
 | PyTorch       | PaddlePaddle | 备注                                                   |
 | ------------- | ------------ | ------------------------------------------------------ |
 | input          | input         | 输入 Tensor                                     |
@@ -72,7 +73,7 @@ $$
 
 
 ```python
-# Pytorch 的 size_average、 reduce 参数转为 Paddle 的 reduction 参数
+# PyTorch 的 size_average、 reduce 参数转为 Paddle 的 reduction 参数
 if size_average is None:
     size_average = True
 if reduce is None:

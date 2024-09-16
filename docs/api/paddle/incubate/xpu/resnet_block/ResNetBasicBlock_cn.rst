@@ -1,8 +1,8 @@
-.. _cn_api_incubate_xpu_ResNetBasicBlock:
+.. _cn_api_paddle_incubate_xpu_resnet_block_ResNetBasicBlock:
 
 ResNetBasicBlock
 -------------------------------
-.. py:class:: paddle.incubate.xpu.ResNetBasicBlock(num_channels1, num_filter1, filter1_size, num_channels2, num_filter2, filter2_size, num_channels3, num_filter3, filter3_size, stride1=1, stride2=1, stride3=1, act='relu', momentum=0.9, eps=1e-5, data_format='NCHW', has_shortcut=False, use_global_stats=False, is_test=False, filter1_attr=None, scale1_attr=None, bias1_attr=None, moving_mean1_name=None, moving_var1_name=None, filter2_attr=None, scale2_attr=None, bias2_attr=None, moving_mean2_name=None, moving_var2_name=None, ilter3_attr=None, scale3_attr=None, bias3_attr=None, moving_mean3_name=None, moving_var3_name=None, padding1=0, padding2=0, padding3=0, dilation1=1, dilation2=1, dilation3=1, trainable_statistics=False, find_conv_max=True)
+.. py:class:: paddle.incubate.xpu.resnet_block.ResNetBasicBlock(num_channels1, num_filter1, filter1_size, num_channels2, num_filter2, filter2_size, num_channels3, num_filter3, filter3_size, stride1=1, stride2=1, stride3=1, act='relu', momentum=0.9, eps=1e-5, data_format='NCHW', has_shortcut=False, use_global_stats=False, is_test=False, filter1_attr=None, scale1_attr=None, bias1_attr=None, moving_mean1_name=None, moving_var1_name=None, filter2_attr=None, scale2_attr=None, bias2_attr=None, moving_mean2_name=None, moving_var2_name=None, ilter3_attr=None, scale3_attr=None, bias3_attr=None, moving_mean3_name=None, moving_var3_name=None, padding1=0, padding2=0, padding3=0, dilation1=1, dilation2=1, dilation3=1, trainable_statistics=False, find_conv_max=True)
 
 该接口用于构建 ``ResNetBasicBlock`` 类的一个可调用对象，实现一次性计算多个 ``Conv2D``、 ``BatchNorm`` 和 ``ReLU`` 的功能，排列顺序参见源码链接。
 
@@ -25,9 +25,9 @@ ResNetBasicBlock
     - **has_shortcut** (bool，可选) - 设置是否计算第三个 Conv2D 和 BatchNorm。为 True 时计算，否则不进行计算。默认值： ``False`` 。
     - **use_global_stats** (bool，可选) – 指示是否使用全局均值和方差。在预测或测试模式下，将 ``use_global_stats`` 设置为 true 或将 ``is_test`` 设置为 true，这两种行为是等效的。在训练模式中，当设置 ``use_global_stats`` 为 True 时，在训练期间也将使用全局均值和方差。默认值：False。
     - **is_test** (bool，可选) - 指示是否在测试阶段，非训练阶段使用训练过程中统计到的全局均值和全局方差。默认值：False。
-    - **filter_attr** (ParamAttr，可选) - 指定对应 ``Conv2D`` 权重参数属性的对象。默认值为 None，表示使用默认的权重参数属性。具体用法请参见 :ref:`cn_api_fluid_ParamAttr` 。
-    - **scale_attr** (ParamAttr，可选) - 指定对应 ``BatchNorm`` 权重参数属性的对象。默认值为 None，表示使用默认的权重参数属性。具体用法请参见 :ref:`cn_api_fluid_ParamAttr` 。
-    - **bias_attr** (ParamAttr，可选) - 指定对应 ``BatchNorm`` 偏置参数属性的对象。默认值为 None，表示使用默认的偏置参数属性。具体用法请参见 :ref:`cn_api_fluid_ParamAttr` 。
+    - **filter_attr** (ParamAttr，可选) - 指定对应 ``Conv2D`` 权重参数属性的对象。默认值为 None，表示使用默认的权重参数属性。具体用法请参见 :ref:`cn_api_paddle_ParamAttr` 。
+    - **scale_attr** (ParamAttr，可选) - 指定对应 ``BatchNorm`` 权重参数属性的对象。默认值为 None，表示使用默认的权重参数属性。具体用法请参见 :ref:`cn_api_paddle_ParamAttr` 。
+    - **bias_attr** (ParamAttr，可选) - 指定对应 ``BatchNorm`` 偏置参数属性的对象。默认值为 None，表示使用默认的偏置参数属性。具体用法请参见 :ref:`cn_api_paddle_ParamAttr` 。
     - **moving_mean_name** (str，可选) - ``moving_mean`` 的名称，存储全局均值。默认值：None。
     - **moving_var_name** (str，可选) - ``moving_var`` 的名称，存储全局方差。默认值：None。
     - **padding** (int，可选) - 填充大小。为一个整数，padding_height = padding_width = padding。默认值：0。

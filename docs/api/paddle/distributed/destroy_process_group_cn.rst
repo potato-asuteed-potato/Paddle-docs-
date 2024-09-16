@@ -1,10 +1,10 @@
-.. _cn_api_distributed_destroy_process_group:
+.. _cn_api_paddle_distributed_destroy_process_group:
 
 destroy_process_group
 -------------------------------
 
 
-.. py:function:: destroy_process_group(group=None)
+.. py:function:: paddle.distributed.destroy_process_group(group=None)
 
 销毁一个指定的通信组。
 

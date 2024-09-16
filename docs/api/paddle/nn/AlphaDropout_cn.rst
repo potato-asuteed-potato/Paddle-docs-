@@ -1,16 +1,16 @@
-.. _cn_api_nn_AlphaDropout:
+.. _cn_api_paddle_nn_AlphaDropout:
 
 AlphaDropout
 -------------------------------
 
-.. py:function:: paddle.nn.AlphaDropout(p=0.5, name=None)
+.. py:class:: paddle.nn.AlphaDropout(p=0.5, name=None)
 
 AlphaDropout 是一种具有自归一化性质的 dropout。均值为 0，方差为 1 的输入，经过 AlphaDropout 计算之后，输出的均值和方差与输入保持一致。AlphaDropout 通常与 SELU 激活函数组合使用。论文请参考：`Self-Normalizing Neural Networks <https://arxiv.org/abs/1706.02515>`_
 
 在动态图模式下，请使用模型的 `eval()` 方法切换至测试阶段。
 
 .. note::
-   对应的 `functional 方法` 请参考：:ref:`cn_api_nn_functional_alpha_dropout` 。
+   对应的 `functional 方法` 请参考：:ref:`cn_api_paddle_nn_functional_alpha_dropout` 。
 
 参数
 :::::::::

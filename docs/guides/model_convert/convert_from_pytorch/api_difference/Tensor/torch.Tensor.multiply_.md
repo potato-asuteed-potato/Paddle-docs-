@@ -1,27 +1,35 @@
-## [ 仅 paddle 参数更多 ] torch.Tensor.multiply_
+## [ 输入参数类型不一致 ] torch.Tensor.multiply_
 
-### [torch.Tensor.multiply_](https://pytorch.org/docs/1.13/generated/torch.Tensor.multiply_.html?highlight=multiply#torch.Tensor.multiply_)
-
-```python
-torch.Tensor.multiply_(value)
-```
-
-### [paddle.Tensor.scale_](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/Tensor_cn.html#id16)
+### [torch.Tensor.multiply_](https://pytorch.org/docs/stable/generated/torch.Tensor.multiply_.html)
 
 ```python
-paddle.Tensor.scale_(scale=1.0,
-                bias=0.0,
-                bias_after_scale=True,
-                act=None,
-                name=None)
+torch.Tensor.multiply_(other)
 ```
 
-Paddle 相比 PyTorch 支持更多其他参数，具体如下：
+### [paddle.Tensor.multiply_]()
+
+```python
+paddle.Tensor.multiply_(y,
+                        axis=-1,
+                        name=None)
+```
+
+其中，Paddle 与 PyTorch 的 `other` 参数所支持类型不一致，具体如下：
 
 ### 参数映射
-| PyTorch       | PaddlePaddle    | 备注                                                              |
-| ------------- | --------------- | ----------------------------------------------------------------- |
-| value         | scale           | 放缩的大小，仅参数名不一致。                                         |
-| -             | bias            | 表示放缩后的偏置部分， PyTorch 无此参数， Paddle 保持默认即可。       |
-| -             | bias_after_scale| 表示是否在放缩后加偏置部分， PyTorch 无此参数， Paddle 保持默认即可。 |
-| -             | act             | PyTorch 无此参数， paddle 保持默认即可。                           |
+
+| PyTorch       | PaddlePaddle | 备注                                             |
+| ------------- | ------------ | ----------------------------------------------- |
+| other         | y            | 相乘的元素，PyTorch 支持 Tensor 和 Python Number，Paddle 仅支持 Tensor，需要转写。                       |
+| -             | axis         | 计算的维度，PyTorch 无此参数， Paddle 保持默认即可。|
+
+### 转写示例
+
+#### other：相乘的元素
+```python
+# PyTorch 写法
+x.multiply_(other=2)
+
+# Paddle 写法
+x.multiply_(y=paddle.to_tensor(2))
+```

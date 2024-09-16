@@ -1,4 +1,115 @@
-[tool.black]
-exclude = "build"
+[tool.ruff]
 line-length = 80
-skip-string-normalization = true
+target-version = "py38"
+
+[tool.ruff.lint]
+select = [
+    # Pycodestyle
+    "E",
+    "W",
+
+    # Pyflakes
+    "F",
+
+    # Isort
+    "I",
+
+    # Comprehensions
+    "C4",
+
+    # Debugger
+    "T100",
+
+    # Pyupgrade
+    "UP",
+
+    # Flake8-pyi
+    "PYI",
+
+    # NumPy-specific rules
+    "NPY001",
+    "NPY003",
+    "NPY201",
+
+    # Bugbear
+    "B002",
+    "B003",
+    "B004",
+    "B009",
+    "B010",
+    "B011",
+    "B012",
+    "B013",
+    "B014",
+    "B015",
+    "B016",
+    "B017",
+    "B018",
+    "B019",
+    "B020",
+    "B021",
+    "B022",
+    "B025",
+    "B029",
+    "B032",
+
+    # Pylint
+    "PLE",
+    "PLC3002",
+    "PLR0206",
+    "PLR0402",
+    "PLR1711",
+    "PLR1722",
+    "PLW3301",
+
+    # Flake8-simplify
+    "SIM101",
+
+    # Pygrep-hooks
+    "PGH004",
+
+    # Flake8-type-checking
+    "TCH",
+
+    # Ruff-specific rules
+    "RUF005",
+    "RUF008",
+    "RUF009",
+    "RUF010",
+    "RUF013",
+    "RUF015",
+    "RUF016",
+    "RUF017",
+    "RUF018",
+    "RUF019",
+    "RUF020",
+    "RUF024",
+    "RUF026",
+    "RUF100",
+
+    # Flake8-raise
+    "RSE",
+
+    # Refurb
+    "FURB",
+
+    # Flake8-future-annotations
+    "FA",
+]
+unfixable = [
+    "NPY001"
+]
+ignore = [
+    "E402",
+    "E501",
+    "E722",
+    "E731",
+    "E741",
+    "F841",
+    "UP015",
+    "UP038"
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["paddle"]

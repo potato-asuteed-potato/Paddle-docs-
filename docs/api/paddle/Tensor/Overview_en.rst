@@ -1,4 +1,3 @@
-
 .. _en_paddle_Tensor:
 
 paddle.Tensor
@@ -80,6 +79,7 @@ Methods
     astype
     atan
     backward
+    bernoulli_
     bitwise_and
     bitwise_not
     bitwise_or
@@ -143,6 +143,7 @@ Methods
     gradient
     greater_equal
     greater_than
+    histogram_bin_edges
     histogram
     imag
     increment
@@ -153,8 +154,12 @@ Methods
     is_empty
     is_tensor
     isfinite
+    isin
     isinf
     isnan
+    isneginf
+    isposinf
+    isreal
     item
     kron
     less_equal
@@ -169,6 +174,7 @@ Methods
     logical_not
     logical_or
     logical_xor
+    log_normal_
     logsumexp
     masked_select
     matmul
@@ -230,6 +236,8 @@ Methods
     sign
     sgn
     sin
+    sinc
+    sinc_
     sinh
     slice
     solve
@@ -253,6 +261,7 @@ Methods
     tanh
     tanh_
     tile
+    to
     tolist
     topk
     trace
@@ -276,3 +285,7 @@ Methods
     trapezoid
     cumulative_trapezoid
     vander
+    hypot
+    hypot_
+    diagonal_scatter
+    combinations

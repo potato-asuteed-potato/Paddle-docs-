@@ -4,7 +4,7 @@
 
 * **处理器：ZHAOXIN KaiSheng KH-37800D**
 * **操作系统：centos7**
-* **Python 版本 3.7/3.8/3.9/3.10 (64 bit)**
+* **Python 版本 3.8/3.9/3.10 (64 bit)**
 * **pip 或 pip3 版本 9.0.1+ (64 bit)**
 
 兆芯为 x86 架构，编译方法与[Linux 下从源码编译 cpu 版](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/install/compile/compile_Linux.html)一致。
@@ -68,10 +68,10 @@
     git checkout develop
     ```
 
-5. 根据[requirments.txt](https://github.com/PaddlePaddle/Paddle/blob/develop/python/requirements.txt)安装 Python 依赖库。
+5. 根据[requirements.txt](https://github.com/PaddlePaddle/Paddle/blob/develop/python/requirements.txt)安装 Python 依赖库。
 
     ```
-    pip install -r python/requirments.txt
+    pip install -r python/requirements.txt
     ```
 
 6. 请创建并进入一个叫 build 的目录下：

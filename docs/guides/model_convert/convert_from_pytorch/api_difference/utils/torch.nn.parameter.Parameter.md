@@ -1,4 +1,4 @@
-## [ 参数不一致 ]torch.nn.parameter.Parameter
+## [ torch 参数更多 ]torch.nn.parameter.Parameter
 ### [torch.nn.parameter.Parameter](https://pytorch.org/docs/stable/generated/torch.nn.parameter.Parameter.html?highlight=torch%20nn%20parameter#torch.nn.parameter.Parameter)
 
 ```python
@@ -18,11 +18,11 @@ paddle.create_parameter(shape,
 ```
 
 两者功能一致但参数不一致，具体如下：
-### 参数差异
+### 参数映射
 | PyTorch       | PaddlePaddle | 备注                                                   |
 | ------------- | ------------ | ------------------------------------------------------ |
-| data          | -            | 参数 Tensor，PaddlePaddle 无此参数。  |
-| requires_grad | -            | ，PaddlePaddle 无此参数。  |
+| data          | -            | 参数 Tensor，Paddle 无此参数。  |
+| requires_grad | -            | ，Paddle 无此参数。  |
 | -             | shape        | 指定输出 Tensor 的形状，PyTorch 无此参数。  |
 | -             | dtype        | 初始化数据类型，PyTorch 无此参数。  |
 | -             | attr         | 指定参数的属性对象，PyTorch 无此参数。  |

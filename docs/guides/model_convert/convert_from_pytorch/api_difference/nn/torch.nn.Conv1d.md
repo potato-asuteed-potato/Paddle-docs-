@@ -1,5 +1,5 @@
-## [ 参数不一致 ]torch.nn.Conv1d
-### [torch.nn.Conv1d](https://pytorch.org/docs/1.13/generated/torch.nn.Conv1d.html?highlight=conv1d#torch.nn.Conv1d)
+## [ 输入参数用法不一致 ]torch.nn.Conv1d
+### [torch.nn.Conv1d](https://pytorch.org/docs/stable/generated/torch.nn.Conv1d.html?highlight=conv1d#torch.nn.Conv1d)
 
 ```python
 torch.nn.Conv1d(in_channels,
@@ -15,7 +15,7 @@ torch.nn.Conv1d(in_channels,
                 dtype=None)
 ```
 
-### [paddle.nn.Conv1D](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/Conv1D_cn.html#conv1d)
+### [paddle.nn.Conv1D](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/paddle/nn/Conv1D_cn.html#conv1d)
 
 ```python
 paddle.nn.Conv1D(in_channels,
@@ -31,8 +31,9 @@ paddle.nn.Conv1D(in_channels,
                  data_format='NCL')
 ```
 
-其中 Pytorch 的 `bias` 与 Paddle 的 `bias_attr` 用法不一致，具体如下：
+其中 PyTorch 的 `bias` 与 Paddle 的 `bias_attr` 用法不一致，具体如下：
 ### 参数映射
+
 | PyTorch       | PaddlePaddle | 备注                                                   |
 | ------------- | ------------ | ------------------------------------------------------ |
 | in_channels          | in_channels            | 表示输入 Tensor 通道数。                           |
@@ -42,7 +43,7 @@ paddle.nn.Conv1D(in_channels,
 | padding          | padding            | 表示填充大小。                           |
 | dilation          | dilation            | 表示空洞大小。                           |
 | groups          | groups            | 表示分组数。                           |
-| `bias`         | -            | 是否在输出中添加可学习的 bias， Paddle 无此参数，需要进行转写。                           |
+| `bias`         | -            | 是否在输出中添加可学习的 bias， Paddle 无此参数，需要转写。                           |
 | padding_mode          | padding_mode            | 表示填充模式。                           |
 | device        | -            | 指定 Tensor 的设备，一般对网络训练结果影响不大，可直接删除。   |
 | dtype         | -            | 指定权重参数属性的对象，一般对网络训练结果影响不大，可直接删除。 |
@@ -54,14 +55,14 @@ paddle.nn.Conv1D(in_channels,
 ### 转写示例
 #### bias: 是否在输出中添加可学习的 bias
 ```python
-# Pytorch 写法
+# PyTorch 写法
 torch.nn.Conv1D(16, 33, 3, bias=True)
 
 # Paddle 写法
 paddle.nn.Conv1D(16, 33, 3)
 ```
 ```python
-# Pytorch 写法
+# PyTorch 写法
 torch.nn.Conv1D(16, 33, 3, bias=False)
 
 # Paddle 写法

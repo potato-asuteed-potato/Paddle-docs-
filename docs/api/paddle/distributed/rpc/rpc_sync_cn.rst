@@ -1,11 +1,11 @@
-.. _cn_api_distributed_rpc_rpc_sync:
+.. _cn_api_paddle_distributed_rpc_rpc_sync:
 
 rpc_sync
 -------------------------------
 
 .. py:function:: paddle.distributed.rpc.rpc_sync(to, fn, args=None, kwargs=None, timeout=-1)
 
-发起一个阻塞的 RPC 调用，在 to 上运行函数 fn
+发起一个阻塞的 RPC 调用，在 to 上运行函数 fn。注意：请用户务必在安全的网络环境下使用本功能。
 
 参数
 :::::::::

@@ -1,25 +1,22 @@
-## torch.Tensor.masked_fill
+## [ 参数完全一致 ] torch.Tensor.masked_fill
+
 ### [torch.Tensor.masked_fill](https://pytorch.org/docs/stable/generated/torch.Tensor.masked_fill.html?highlight=masked_fill#torch.Tensor.masked_fill)
 
 ```python
 torch.Tensor.masked_fill(mask, value)
 ```
 
-### [paddle]
+### [paddle.Tensor.masked_fill](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/Tensor_cn.html#masked-fill-mask-value-name-non)
 
 ```python
--
+paddle.Tensor.masked_fill(mask, value, name=None)
 ```
 
-torch 是类成员方式，paddle 无 masked_fill 函数，需要组合实现。
+两者功能一致，参数完全一致，具体如下：
 
-### 转写示例
+### 参数映射
 
-```python
-# torch 写法
-x.masked_fill(mask, value)
-
-# paddle 写法
-out = paddle.full(x.shape, value, x.dtype)
-x = paddle.where(mask, out, x)
-```
+| PyTorch | PaddlePaddle | 备注                                               |
+|---------|--------------| -------------------------------------------------- |
+| mask     | mask          | 布尔张量，表示要填充的位置    |
+| value     | value          | 用于填充目标张量的值    |

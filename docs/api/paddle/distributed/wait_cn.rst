@@ -1,10 +1,10 @@
-.. _cn_api_distributed_wait:
+.. _cn_api_paddle_distributed_wait:
 
 wait
 -------------------------------
 
 
-.. py:function:: wait(tensor, group=None, use_calc_stream=True)
+.. py:function:: paddle.distributed.wait(tensor, group=None, use_calc_stream=True)
 
 
 同步通信组

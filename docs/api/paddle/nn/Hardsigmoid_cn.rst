@@ -1,9 +1,9 @@
-.. _cn_api_nn_Hardsigmoid:
+.. _cn_api_paddle_nn_Hardsigmoid:
 
 Hardsigmoid
 -------------------------------
 
-.. py:function:: paddle.nn.Hardsigmoid(name=None)
+.. py:class:: paddle.nn.Hardsigmoid(name=None)
 
 Hardsigmoid 激活层，用于创建一个 `Hardsigmoid` 类的可调用对象。sigmoid 的分段线性逼近激活函数，速度比 sigmoid 快，详细解释参见 `Noisy Activation Functions <https://arxiv.org/abs/1603.00391>`_ 。
 

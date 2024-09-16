@@ -18,8 +18,8 @@ paddle.sparse 目录包含飞桨框架支持稀疏数据存储和计算相关的
 .. csv-table::
     :header: "API 名称", "API 功能"
 
-    " :ref:`paddle.sparse.sparse_coo_tensor <cn_api_paddle_sparse_coo_tensor>` ", "创建一个 COO 格式的 SparseTensor"
-    " :ref:`paddle.sparse.sparse_csr_tensor <cn_api_paddle_sparse_csr_tensor>` ", "创建一个 CSR 格式的 SparseTensor"
+    " :ref:`paddle.sparse.sparse_coo_tensor <cn_api_paddle_sparse_sparse_coo_tensor>` ", "创建一个 COO 格式的 SparseTensor"
+    " :ref:`paddle.sparse.sparse_csr_tensor <cn_api_paddle_sparse_sparse_csr_tensor>` ", "创建一个 CSR 格式的 SparseTensor"
 
 .. _about_sparse_math:
 
@@ -59,6 +59,7 @@ paddle.sparse 目录包含飞桨框架支持稀疏数据存储和计算相关的
     " :ref:`paddle.sparse.reshape <cn_api_paddle_sparse_reshape>` ", "改变一个 SparseTensor 的形状"
     " :ref:`paddle.sparse.coalesce<cn_api_paddle_sparse_coalesce>` ", "对 SparseCooTensor 进行排序并合并"
     " :ref:`paddle.sparse.transpose <cn_api_paddle_sparse_transpose>` ", "在不改变数据的情况下改变 ``x`` 的维度顺序, 支持 COO 格式的多维 SparseTensor 以及 COO 格式的 2 维和 3 维 SparseTensor"
+    " :ref:`paddle.sparse.mask_as<cn_api_paddle_sparse_mask_as>` ", "稀疏张量的掩码逻辑，使用稀疏张量 `mask` 的索引过滤输入的稠密张量 `x`"
 
 .. _about_sparse_nn:
 
@@ -72,11 +73,13 @@ paddle.sparse 目录包含飞桨框架支持稀疏数据存储和计算相关的
     " :ref:`paddle.sparse.nn.ReLU6 <cn_api_paddle_sparse_nn_ReLU6>` ", "激活层"
     " :ref:`paddle.sparse.nn.LeakyReLU <cn_api_paddle_sparse_nn_LeakyReLU>` ", "激活层"
     " :ref:`paddle.sparse.nn.Softmax <cn_api_paddle_sparse_nn_Softmax>` ", "激活层"
+    " :ref:`paddle.sparse.nn.Conv2D <cn_api_paddle_sparse_nn_Conv2D>` ", "二维卷积层"
     " :ref:`paddle.sparse.nn.Conv3D <cn_api_paddle_sparse_nn_Conv3D>` ", "三维卷积层"
     " :ref:`paddle.sparse.nn.SubmConv3D <cn_api_paddle_sparse_nn_SubmConv3D>` ", "子流形三维卷积层"
     " :ref:`paddle.sparse.nn.BatchNorm<cn_api_paddle_sparse_nn_BatchNorm>` ", " Batch Normalization 层"
     " :ref:`paddle.sparse.nn.SyncBatchNorm<cn_api_paddle_sparse_nn_SyncBatchNorm>` ", " Synchronized Batch Normalization 层"
     " :ref:`paddle.sparse.nn.MaxPool3D<cn_api_paddle_sparse_nn_MaxPool3D>` ", "三维最大池化层"
+    " :ref:`paddle.sparse.nn.SubmConv2D <cn_api_paddle_sparse_nn_SubmConv2D>` ", "子流形二维卷积层"
 
 .. _about_sparse_nn_functional:
 
@@ -91,6 +94,8 @@ paddle.sparse 目录包含飞桨框架支持稀疏数据存储和计算相关的
     " :ref:`paddle.sparse.nn.functional.leaky_relu <cn_api_paddle_sparse_nn_functional_leaky_relu>` ", "激活函数"
     " :ref:`paddle.sparse.nn.functional.softmax <cn_api_paddle_sparse_nn_functional_softmax>` ", "激活函数"
     " :ref:`paddle.sparse.nn.functional.attention <cn_api_paddle_sparse_nn_functional_attention>` ", "稀疏 attention 函数"
+    " :ref:`paddle.sparse.nn.functional.conv2d <cn_api_paddle_sparse_nn_functional_conv2d>` ", "二维卷积函数"
     " :ref:`paddle.sparse.nn.functional.conv3d <cn_api_paddle_sparse_nn_functional_conv3d>` ", "三维卷积函数"
     " :ref:`paddle.sparse.nn.functional.subm_conv3d <cn_api_paddle_sparse_nn_functional_subm_conv3d>` ", "子流形三维卷积函数"
     " :ref:`paddle.sparse.nn.functional.max_pool3d <cn_api_paddle_sparse_nn_functional_max_pool3d>` ", "三维最大池化函数"
+    " :ref:`paddle.sparse.nn.functional.subm_conv2d <cn_api_paddle_sparse_nn_functional_subm_conv2d>` ", "子流形二维卷积函数"

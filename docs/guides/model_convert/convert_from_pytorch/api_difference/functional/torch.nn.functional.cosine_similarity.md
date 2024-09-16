@@ -9,7 +9,7 @@ torch.nn.functional.cosine_similarity(x1,
                                       eps=1e-08)
 ```
 
-### [paddle.nn.functional.cosine_similarity](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/functional/cosine_similarity_cn.html)
+### [paddle.nn.functional.cosine_similarity](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/paddle/nn/functional/cosine_similarity_cn.html)
 
 ```python
 paddle.nn.functional.cosine_similarity(x1,
@@ -20,6 +20,7 @@ paddle.nn.functional.cosine_similarity(x1,
 
 两者功能一致，仅参数名不一致，具体如下：
 ### 参数映射
+
 | PyTorch       | PaddlePaddle | 备注                                                   |
 | ------------- | ------------ | ------------------------------------------------------ |
 | x1          | x1         | 表示第一个输入的 Tensor 。                                     |

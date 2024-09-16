@@ -1,18 +1,16 @@
-import paddle
 import inspect
 import pkgutil
-import os
-import sys
 import subprocess
+import sys
+
+import paddle
 
 
 class AliasAPIGen:
     def __init__(self, paddle_root_path):
         self.api_dict = {}
         self.root_module = paddle
-        self.not_display_prefix = set(
-            ["paddle.incubate", "paddle.fluid.contrib"]
-        )
+        self.not_display_prefix = {"paddle.incubate", "paddle.fluid.contrib"}
         self.id_api_dict = {}
         self.paddle_root_path = paddle_root_path
 
@@ -27,7 +25,6 @@ class AliasAPIGen:
             path=self.root_module.__path__,
             prefix=self.root_module.__name__ + ".",
         ):
-
             try:
                 m = eval(name)
             except AttributeError:
@@ -90,14 +87,11 @@ class AliasAPIGen:
 
         obj = eval(api)
         if inspect.isclass(obj):
-            reg = "class %s(" % api.split(".")[-1]
+            reg = "class {}(".format(api.split(".")[-1])
         elif inspect.isfunction(obj):
-            reg = "def %s(" % api.split(".")[-1]
+            reg = "def {}(".format(api.split(".")[-1])
 
-        shell_cmd = "find %s -name '*.py' | xargs grep  \"%s\" " % (
-            self.paddle_root_path,
-            reg,
-        )
+        shell_cmd = f"find {self.paddle_root_path} -name '*.py' | xargs grep  \"{reg}\" "
 
         p = subprocess.Popen(
             shell_cmd, shell=True, stdout=subprocess.PIPE, stderr=None
@@ -147,7 +141,7 @@ class AliasAPIGen:
         # sort others api by path length
         api_list.sort(key=lambda api: api.count("."))
 
-        return [real_api] + [rec_api] + api_list
+        return [real_api, rec_api, *api_list]
 
     def filter_api(self, api_list):
         for api in api_list:
@@ -174,7 +168,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Useage:")
         print("python3 gen_alias_api.py path-to-paddle-root")
-        exit(1)
+        sys.exit(1)
     else:
         paddle_root = sys.argv[1]
         alias_gen = AliasAPIGen(paddle_root + "/python/")

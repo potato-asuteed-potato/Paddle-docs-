@@ -1,11 +1,11 @@
-.. _cn_api_fluid_BuildStrategy:
+.. _cn_api_paddle_static_BuildStrategy:
 
 BuildStrategy
 -------------------------------
 
 .. py:class:: paddle.static.BuildStrategy
 
-``BuildStrategy`` 使用户更方便地控制 :ref:`cn_api_fluid_ParallelExecutor` 中计算图的建造方法，可通过设置 ``ParallelExecutor`` 中的 ``BuildStrategy`` 成员来实现此功能。
+``BuildStrategy`` 使用户更方便地控制 ``ParallelExecutor`` 中计算图的建造方法，可通过设置 ``ParallelExecutor`` 中的 ``BuildStrategy`` 成员来实现此功能。
 
 返回
 :::::::::
@@ -64,15 +64,6 @@ bool 类型。表明是否融合(fuse) relu 和 depthwise_conv2d，节省 GPU �
 
 COPY-FROM: paddle.static.BuildStrategy.fuse_relu_depthwise_conv
 
-gradient_scale_strategy
-'''''''''
-
-``paddle.static.BuildStrategy.GradientScaleStrategy`` 类型。在 ``ParallelExecutor`` 中，存在三种定义 loss 对应梯度( *loss@grad* )的方式，分别为 ``CoeffNumDevice``, ``One`` 与 ``Customized``。默认情况下，``ParallelExecutor`` 根据设备数目来设置 *loss@grad*。如果用户需要自定义 *loss@grad*，可以选择 ``Customized`` 方法。默认为 ``CoeffNumDevice`` 。
-
-**代码示例**
-
-COPY-FROM: paddle.static.BuildStrategy.gradient_scale_strategy
-
 memory_optimize
 '''''''''
 
@@ -87,15 +78,6 @@ reduce_strategy
 **代码示例**
 
 COPY-FROM: paddle.static.BuildStrategy.reduce_strategy
-
-remove_unnecessary_lock
-'''''''''
-
-bool 类型。设置 True 会去除 GPU 操作中的一些锁操作，``ParallelExecutor`` 将运行得更快，默认为 True。
-
-**代码示例**
-
-COPY-FROM: paddle.static.BuildStrategy.remove_unnecessary_lock
 
 sync_batch_norm
 '''''''''

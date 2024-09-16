@@ -1,9 +1,9 @@
-.. _cn_api_tensor_Flatten:
+.. _cn_api_paddle_nn_Flatten:
 
 Flatten
 -------------------------------
 
-.. py:function:: paddle.nn.Flatten(start_axis=1, stop_axis=-1)
+.. py:class:: paddle.nn.Flatten(start_axis=1, stop_axis=-1)
 
 
 

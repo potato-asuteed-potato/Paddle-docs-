@@ -8,7 +8,7 @@ torch.nn.functional.adaptive_max_pool1d(input,
                                         return_indices=False)
 ```
 
-### [paddle.nn.functional.adaptive_max_pool1d](https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/functional/adaptive_max_pool1d_cn.html#adaptive-max-pool1d)
+### [paddle.nn.functional.adaptive_max_pool1d](https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/paddle/nn/functional/adaptive_max_pool1d_cn.html#adaptive-max-pool1d)
 
 ```python
 paddle.nn.functional.adaptive_max_pool1d(x,
@@ -20,6 +20,7 @@ paddle.nn.functional.adaptive_max_pool1d(x,
 两者功能一致，仅参数名不一致，具体如下：
 
 ### 参数映射
+
 | PyTorch       | PaddlePaddle | 备注                                                   |
 | ------------- | ------------ | ------------------------------------------------------ |
 | input           | x           | 表示输入的 Tensor ，仅参数名不一致。               |

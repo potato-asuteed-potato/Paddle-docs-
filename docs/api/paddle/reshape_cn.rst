@@ -1,4 +1,4 @@
-.. _cn_api_fluid_layers_reshape:
+.. _cn_api_paddle_reshape:
 
 reshape
 -------------------------------
@@ -23,10 +23,15 @@ reshape
   - 2。给定一个形状为[2,4,6]的三维 Tensor x，目标形状为[2,3,-1,2]，则将 x 变换为形状为[2,3,4,2]的 4-D Tensor，且 x 的数据保持不变。在这种情况下，目标形状的一个维度被设置为-1，这个维度的值是从 x 的元素总数和剩余维度推断出来的。
   - 3。给定一个形状为[2,4,6]的三维 Tensor x，目标形状为[-1,0,3,2]，则将 x 变换为形状为[2,4,3,2]的 4-D Tensor，且 x 的数据保持不变。在这种情况下，0 对应位置的维度值将从 x 的对应维数中复制，-1 对应位置的维度值由 x 的元素总数和剩余维度推断出来。
 
+下图展示了第一个例子中的情形——一个形状为[2,4,6]的三维张量通过 reshape 操作转变为形状为[6,8]的二维张量，同时保持了张量中元素的顺序和值不变。通过比较，可以清晰地看到张量形状变化前后各元素的对应关系。
+
+.. image:: ../../images/api_legend/reshape.png
+   :alt: 图例
+
 参数
 ::::::::::::
 
-  - **x** (Tensor) - N-D ``Tensor``，数据类型为 ``float32``、``float64``、``int32``、``int64`` 或者 ``bool``。
+  - **x** (Tensor) - N-D ``Tensor``，数据类型为 ``float16``, ``float32``, ``float64``, ``int16``, ``int32``, ``int64``, ``int8``, ``uint8``, ``complex64``, ``complex128``, ``bfloat16`` 或 ``bool``。
   - **shape** (list|tuple|Tensor) - 数据类型是 ``int32``。定义目标形状。目标形状最多只能有一个维度为-1。如果 ``shape`` 的类型是 list 或 tuple，它的元素可以是整数或者形状为[]的 ``Tensor``。如果 ``shape`` 的类型是 ``Tensor``，则是 1-D 的 ``Tensor``。
   - **name** (str，可选) - 具体用法请参见 :ref:`api_guide_Name`，一般无需设置，默认值为 None。
 

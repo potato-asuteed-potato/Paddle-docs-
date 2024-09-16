@@ -1,10 +1,10 @@
-.. _cn_api_distributed_new_group:
+.. _cn_api_paddle_distributed_new_group:
 
 new_group
 -------------------------------
 
 
-.. py:function:: new_group(ranks=None, backend=None)
+.. py:function:: paddle.distributed.new_group(ranks=None, backend=None)
 
 创建分布式通信组。
 

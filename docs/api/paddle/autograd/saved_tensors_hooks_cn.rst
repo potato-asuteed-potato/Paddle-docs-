@@ -1,4 +1,4 @@
-.. _cn_api_autograd_saved_tensors_hooks:
+.. _cn_api_paddle_autograd_saved_tensors_hooks:
 
 saved_tensors_hooks
 -------------------------------
@@ -18,60 +18,12 @@ saved_tensors_hooks 用于动态图，注册一对 pack / unpack hook，用于�
 
 无
 
-代码示例
+代码示例 1
 ::::::::::::
 
-.. code-block:: python
+COPY-FROM: paddle.autograd.saved_tensors_hooks:code-example1
 
-    # Example1
-    import paddle
+代码示例 2
+::::::::::::
 
-    def pack_hook(x):
-        print("Packing", x)
-        return x.numpy()
-
-    def unpack_hook(x):
-        print("UnPacking", x)
-        return paddle.to_tensor(x)
-
-    a = paddle.ones([3,3])
-    b = paddle.ones([3,3]) * 2
-    a.stop_gradient = False
-    b.stop_gradient = False
-    with paddle.autograd.saved_tensors_hooks(pack_hook, unpack_hook):
-        y = paddle.multiply(a, b)
-    y.sum().backward()
-
-    # Example2
-    import paddle
-    from paddle.autograd import PyLayer
-
-    class cus_tanh(PyLayer):
-        @staticmethod
-        def forward(ctx, a, b):
-            y = paddle.multiply(a, b)
-            ctx.save_for_backward(a, b)
-            return y
-
-        @staticmethod
-        def backward(ctx, dy):
-            a,b = ctx.saved_tensor()
-            grad_a = dy * a
-            grad_b = dy * b
-            return grad_a, grad_b
-
-    def pack_hook(x):
-        print("Packing", x)
-        return x.numpy()
-
-    def unpack_hook(x):
-        print("UnPacking", x)
-        return paddle.to_tensor(x)
-
-    a = paddle.ones([3,3])
-    b = paddle.ones([3,3]) * 2
-    a.stop_gradient = False
-    b.stop_gradient = False
-    with paddle.autograd.saved_tensors_hooks(pack_hook, unpack_hook):
-        y = cus_tanh.apply(a, b)
-    y.sum().backward()
+COPY-FROM: paddle.autograd.saved_tensors_hooks:code-example2
